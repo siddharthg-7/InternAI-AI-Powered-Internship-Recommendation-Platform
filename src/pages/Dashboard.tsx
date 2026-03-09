@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/context/LanguageContext";
 import InternshipCard from "@/components/InternshipCard";
 import ReadinessScore from "@/components/ReadinessScore";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import {
   Sparkles, ArrowRight, TrendingUp, MessageCircle,
   BarChart3, Zap, BookMarked, Search,
@@ -11,11 +11,11 @@ import {
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/AuthContext";
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 16 },
   visible: (i: number) => ({
     opacity: 1, y: 0,
-    transition: { delay: i * 0.07, duration: 0.4, ease: "easeOut" },
+    transition: { delay: i * 0.07, duration: 0.4, ease: "easeOut" as const },
   }),
 };
 
