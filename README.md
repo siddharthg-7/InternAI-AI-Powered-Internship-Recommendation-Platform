@@ -1,121 +1,278 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InternAI | AI-Powered Career Intelligence</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f9fafb; }
-        .code-block { background-color: #1e1e1e; color: #d4d4d4; padding: 1.5rem; border-radius: 0.5rem; font-family: 'Fira Code', monospace; }
-        .gradient-text { background: linear-gradient(90deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    </style>
-</head>
-<body class="text-gray-800 leading-relaxed">
+# InternAI – AI Internship Recommendation Platform
 
-    <header class="bg-white border-b border-gray-200 py-12 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-5xl font-extrabold mb-4 gradient-text">🚀 InternAI</h1>
-            <p class="text-xl text-gray-600 font-medium mb-6">AI-Driven Career Intelligence Platform</p>
-            
-            <div class="flex justify-center gap-3 mb-8">
-                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">React + TypeScript</span>
-                <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-semibold">Supabase</span>
-                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">Tailwind CSS</span>
-            </div>
+[![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)]()
+[![Frontend](https://img.shields.io/badge/Frontend-React%20%7C%20Vite-61dafb.svg)]()
+[![Backend](https://img.shields.io/badge/Backend-Firebase-orange.svg)]()
+[![Language](https://img.shields.io/badge/Language-TypeScript-blue.svg)]()
+[![UI](https://img.shields.io/badge/UI-TailwindCSS-38bdf8.svg)]()
+[![AI](https://img.shields.io/badge/AI-Gemini%202.0%20Flash-purple.svg)]()
 
-            <p class="text-lg text-gray-700 max-w-2xl mx-auto">
-                InternAI is an intelligent career discovery engine designed to bridge the gap between student skills and industry requirements. We transform the traditional "search-and-apply" burnout into a personalized, guided career journey.
-            </p>
-        </div>
-    </header>
+An AI-powered internship discovery and career intelligence platform designed to help students find the most relevant internship opportunities based on their **skills, interests, and career goals**.
 
-    <main class="max-w-4xl mx-auto py-12 px-6">
+InternAI replaces the traditional internship search process with an **intelligent recommendation engine that provides personalized opportunities, skill insights, and career guidance.**
 
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 border-b-2 border-blue-500 inline-block">Core Intelligence</h2>
-            <div class="grid md:grid-cols-2 gap-8 mt-6">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <i class="fas fa-brain text-blue-500 text-2xl mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Matching Engine</h3>
-                    <p class="text-gray-600">Uses a multi-vector algorithm comparing skill compatibility, domain interests, and location preferences with 90%+ accuracy.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <i class="fas fa-file-invoice text-purple-500 text-2xl mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Resume Parsing</h3>
-                    <p class="text-gray-600">Automated extraction of skills and certifications from PDF/DOCX to build profiles instantly without manual data entry.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <i class="fas fa-chart-line text-green-500 text-2xl mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Skill Gap Analysis</h3>
-                    <p class="text-gray-600">Identifies the "Delta" between your profile and top internships, providing a roadmap for technical growth.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <i class="fas fa-shield-alt text-red-500 text-2xl mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Scam Detection</h3>
-                    <p class="text-gray-600">Heuristic-based layer that flags unrealistic stipends and unverified links to protect first-gen learners.</p>
-                </div>
-            </div>
-        </section>
+---
 
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-6">Technical Architecture</h2>
-            
-            <div class="overflow-x-auto mt-6">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="bg-gray-100">
-                            <th class="p-4 border">Layer</th>
-                            <th class="p-4 border">Technology</th>
-                            <th class="p-4 border">Purpose</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="p-4 border font-semibold">Frontend</td>
-                            <td class="p-4 border text-blue-600">React 18 / Vite</td>
-                            <td class="p-4 border italic text-sm text-gray-600">High-performance SPA with TypeScript.</td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 border font-semibold">Backend</td>
-                            <td class="p-4 border text-blue-600">Supabase</td>
-                            <td class="p-4 border italic text-sm text-gray-600">PostgreSQL DB + Edge Functions.</td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 border font-semibold">UI/UX</td>
-                            <td class="p-4 border text-blue-600">Tailwind / Google Stitch</td>
-                            <td class="p-4 border italic text-sm text-gray-600">Responsive design and modern components.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+## Features
 
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-6">Getting Started</h2>
-            <div class="code-block">
-                <p class="text-green-400"># Clone the repository</p>
-                <p>git clone https://github.com/SiddharthaGoud/InternAI.git</p>
-                <br>
-                <p class="text-green-400"># Install dependencies</p>
-                <p>npm install</p>
-                <br>
-                <p class="text-green-400"># Start local development server</p>
-                <p>npm run dev</p>
-            </div>
-        </section>
+### 🤖 AI Internship Recommendation Engine
+- Personalized internship matching based on student profiles
+- Multi-factor analysis including **skills, interests, and location preferences**
+- Returns **top 3–5 relevant internship opportunities**
+- Provides clear explanations for why each internship was recommended
 
-        <footer class="bg-gray-900 text-white p-10 rounded-2xl text-center">
-            <h2 class="text-2xl font-bold mb-4">Developed by Gilakathi Siddhartha Goud</h2>
-            <p class="text-gray-400 mb-6 italic">B.Tech IT | Developer | AI Tools Enthusiast</p>
-            <div class="flex justify-center gap-6">
-                <a href="https://github.com/SiddharthaGoud" class="hover:text-blue-400 transition-colors"><i class="fab fa-github text-3xl"></i></a>
-                <a href="#" class="hover:text-blue-400 transition-colors"><i class="fab fa-linkedin text-3xl"></i></a>
-                <a href="mailto:siddharthgoudgilakathi@gmail.com" class="hover:text-blue-400 transition-colors"><i class="fas fa-envelope text-3xl"></i></a>
-            </div>
-        </footer>
+---
 
-    </main>
-</body>
-</html>
+### 📄 Resume Parsing & Skill Extraction
+- Upload resumes in **PDF or DOCX**
+- Automatically extracts:
+  - Skills
+  - Education
+  - Certifications
+  - Projects
+- Generates a student profile instantly without manual input
+
+---
+
+### 📊 Skill Gap Analysis
+- Compares student profiles with internship requirements
+- Identifies missing skills required for desired roles
+- Provides recommendations on **what skills to learn next**
+
+---
+
+### 🎯 Internship Readiness Score
+- Calculates a readiness score based on:
+  - Skills
+  - Projects
+  - Certifications
+  - Education relevance
+- Helps students understand their **preparedness for internships**
+
+---
+
+### 🛤️ Career Path Prediction
+- Suggests possible career paths based on detected skills
+
+**Example:**
+
+`Python + SQL` →
+- Data Analyst
+- Machine Learning Engineer
+- Data Scientist
+
+---
+
+### 🛡️ Internship Scam Detection
+- Identifies suspicious internship listings
+- Flags:
+  - Unrealistic stipends
+  - Missing company details
+  - Suspicious application links
+
+Protects students from fraudulent opportunities.
+
+---
+
+### 💬 AI Career Assistant
+- Interactive chatbot powered by **Google Gemini 2.0 Flash**
+- Students can ask:
+  - Which internships suit me?
+  - What skills should I learn next?
+  - How can I improve my resume?
+
+---
+
+### 🖥️ Personalized Dashboard
+Students can view:
+- Internship recommendations
+- Skill gap insights
+- Career readiness score
+- Saved internships
+- Profile analytics
+
+---
+
+## AI Matching Logic
+
+| Component | Method | Purpose |
+|-----------|--------|---------|
+| Skill Matching | Weighted Matching | Identify compatibility with internships |
+| Domain Matching | Interest Mapping | Align career interests |
+| Location Preference | Filtering | Match preferred location |
+| Ranking Algorithm | Score-based Ranking | Recommend top internships |
+
+### Scoring Formula
+
+```
+Skill Match    +5
+Domain Match   +3
+Location Match +2
+Experience Match +2
+```
+
+---
+
+## System Architecture
+
+```
+User
+│
+▼
+Student Profile Input
+│
+▼
+Resume Parsing Engine
+│
+▼
+Skill Extraction
+│
+▼
+Recommendation Engine
+│
+├── Internship Database
+│
+▼
+Top Internship Matches
+│
+▼
+Skill Gap Analysis
+│
+▼
+Career Intelligence Dashboard
+```
+
+---
+
+## Technology Stack
+
+| Layer | Technology | Purpose |
+|-------|------------|---------|
+| Frontend | React + Vite + TypeScript | Fast SPA interface |
+| UI Framework | Tailwind CSS | Responsive UI |
+| Backend / Auth | Firebase | Authentication & Firestore database |
+| AI / Chatbot | Google Gemini 2.0 Flash | AI career assistant & recommendations |
+| Internship Data | Adzuna API | Live internship listings |
+| UI Design | Google Stitch AI | Modern SaaS interface |
+
+---
+
+## UI & Design
+
+- Modern SaaS-style interface
+- Smooth animations and micro-interactions
+- Clean AI dashboard layout
+- Mobile-first responsive design
+- Accessible UI for students with limited digital exposure
+
+---
+
+## Project Structure
+
+```
+InternAI/
+├── src/
+│   ├── components/       # Reusable UI components
+│   ├── pages/            # Route-level page components
+│   ├── lib/              # Firebase, Gemini, Adzuna API clients
+│   ├── context/          # App state & language context
+│   ├── hooks/            # Custom React hooks
+│   └── locales/          # i18n translation files (EN, HI, TE)
+│
+├── public/               # Static assets & favicon
+├── firebase.json         # Firebase Hosting config
+├── .firebaserc           # Firebase project config
+├── package.json
+└── README.md
+```
+
+---
+
+## Quick Start
+
+### Prerequisites
+
+- Node.js v18+
+- npm
+
+---
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+### Run Development Server
+
+```bash
+npm run dev
+```
+
+---
+
+### Build Production Version
+
+```bash
+npm run build
+```
+
+---
+
+### Deploy to Firebase Hosting
+
+```bash
+# Login to Firebase (first time only)
+npx firebase login
+
+# Build & deploy
+npm run deploy
+```
+
+---
+
+## Future Enhancements
+
+- Machine learning recommendation models
+- Resume improvement suggestions
+- More internship API integrations
+- Internship application tracking
+- Career path visualization
+- Industry skill demand analytics
+
+---
+
+## Security & Performance
+
+- Secure authentication via Firebase (Google Sign-In)
+- Optimized internship matching algorithm
+- Efficient Firestore database queries
+- Scalable architecture for large user bases
+
+---
+
+## Contributing
+
+Contributions, suggestions, and improvements are welcome.
+
+Open an issue or submit a pull request.
+
+---
+
+## License
+
+MIT License
+
+---
+
+## Author
+
+**Gilakathi Siddhartha Goud**  
+B.Tech Information Technology
+
+Developer | AI Tools | Data Systems
+
+🔗 GitHub: [github.com/siddharthg-7](https://github.com/siddharthg-7)  
+📧 Email: [siddharthgoudgilakathi@gmail.com](mailto:siddharthgoudgilakathi@gmail.com)
