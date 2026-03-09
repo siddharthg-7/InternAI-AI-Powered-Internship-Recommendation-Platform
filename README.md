@@ -15,7 +15,7 @@ InternAI replaces the traditional internship search process with an **intelligen
 
 ## Features
 
-### 🤖 AI Internship Recommendation Engine
+###  AI Internship Recommendation Engine
 - Personalized internship matching based on student profiles
 - Multi-factor analysis including **skills, interests, and location preferences**
 - Returns **top 3–5 relevant internship opportunities**
@@ -23,7 +23,7 @@ InternAI replaces the traditional internship search process with an **intelligen
 
 ---
 
-### 📄 Resume Parsing & Skill Extraction
+###  Resume Parsing & Skill Extraction
 - Upload resumes in **PDF or DOCX**
 - Automatically extracts:
   - Skills
@@ -34,14 +34,14 @@ InternAI replaces the traditional internship search process with an **intelligen
 
 ---
 
-### 📊 Skill Gap Analysis
+###  Skill Gap Analysis
 - Compares student profiles with internship requirements
 - Identifies missing skills required for desired roles
 - Provides recommendations on **what skills to learn next**
 
 ---
 
-### 🎯 Internship Readiness Score
+### Internship Readiness Score
 - Calculates a readiness score based on:
   - Skills
   - Projects
@@ -51,7 +51,7 @@ InternAI replaces the traditional internship search process with an **intelligen
 
 ---
 
-### 🛤️ Career Path Prediction
+###  Career Path Prediction
 - Suggests possible career paths based on detected skills
 
 **Example:**
@@ -63,7 +63,7 @@ InternAI replaces the traditional internship search process with an **intelligen
 
 ---
 
-### 🛡️ Internship Scam Detection
+###  Internship Scam Detection
 - Identifies suspicious internship listings
 - Flags:
   - Unrealistic stipends
@@ -74,7 +74,7 @@ Protects students from fraudulent opportunities.
 
 ---
 
-### 💬 AI Career Assistant
+###  AI Career Assistant
 - Interactive chatbot powered by **Google Gemini 2.0 Flash**
 - Students can ask:
   - Which internships suit me?
@@ -83,7 +83,7 @@ Protects students from fraudulent opportunities.
 
 ---
 
-### 🖥️ Personalized Dashboard
+###  Personalized Dashboard
 Students can view:
 - Internship recommendations
 - Skill gap insights
@@ -274,5 +274,5 @@ B.Tech Information Technology
 
 Developer | AI Tools | Data Systems
 
-🔗 GitHub: [github.com/siddharthg-7](https://github.com/siddharthg-7)  
-📧 Email: [siddharthgoudgilakathi@gmail.com](mailto:siddharthgoudgilakathi@gmail.com)
+ GitHub: [github.com/siddharthg-7](https://github.com/siddharthg-7)  
+ Email: [siddharthgoudgilakathi@gmail.com](mailto:siddharthgoudgilakathi@gmail.com)
