@@ -10,6 +10,7 @@ export default defineConfig({
     hmr: {
       overlay: false,
     },
+    allowedHosts: ["mariana-unperpetuable-nonfeverishly.ngrok-free.dev"],
   },
   plugins: [react()],
   resolve: {
