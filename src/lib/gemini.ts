@@ -4,8 +4,9 @@ const apiKey = import.meta.env.VITE_GOOGLE_API_KEY || "AIzaSyAW083EQNwzdthLjmf8g
 
 const openai = new OpenAI({
   apiKey: apiKey,
-  baseURL: "https://generativelanguage.googleapis.com/v1beta/openai",
+  baseURL: window.location.origin + "/api/gemini",
   dangerouslyAllowBrowser: true,
+  maxRetries: 0, // Disable internal retries to use our own logic
 });
 
 const SYSTEM_INSTRUCTION = `You are InternAI, a friendly and helpful AI career assistant for students. You help with:
@@ -88,7 +89,8 @@ class TokenBucket {
 }
 
 // Gemini free-tier starts at 15 Requests Per Minute.
-const rmpBucket = new TokenBucket(10, 10);
+// We use a small capacity (burst) to avoid hitting the 15 RPM limit too quickly.
+const rmpBucket = new TokenBucket(2, 10);
 
 // Exponential Backoff Config 
 const MAX_RETRIES = 5;
@@ -119,8 +121,9 @@ async function fetchWithRetry(
 
     // 3. Call the completion API
     const completion = await openai.chat.completions.create({
-      model: "gemini-2.0-flash",
+      model: "gemini-2.5-flash",
       messages: messages,
+    }, {
       timeout: 30000,
     });
 
@@ -154,6 +157,18 @@ async function fetchWithRetry(
     throw error;
   }
 }
+
+// create an function for the jobs search using api
+
+function jobsSearch() {
+  // use the url and api key to get the jobs data
+  // and link the chat bot with this function and get the real time jobs data
+}
+
+
+
+
+
 
 export async function sendChatMessage(
   history: ChatMessage[],
