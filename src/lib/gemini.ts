@@ -1,10 +1,10 @@
 import OpenAI from "openai";
 
-const apiKey = import.meta.env.VITE_GOOGLE_API_KEY || "AIzaSyAW083EQNwzdthLjmf8gNrHtG5rxr35C9E";
+const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
 
 const openai = new OpenAI({
   apiKey: apiKey,
-  baseURL: window.location.origin + "/api/gemini",
+  baseURL: "https://generativelanguage.googleapis.com/v1beta/openai",
   dangerouslyAllowBrowser: true,
   maxRetries: 0, // Disable internal retries to use our own logic
 });
@@ -121,13 +121,13 @@ async function fetchWithRetry(
 
     // 3. Call the completion API
     const completion = await openai.chat.completions.create({
-      model: "gemini-2.5-flash",
+      model: "gemini-1.5-flash",
       messages: messages,
     }, {
       timeout: 30000,
     });
 
-    const text = completion.choices[0]?.message?.content || "";
+    const text = completion.choices?.[0]?.message?.content || "";
     return text;
 
   } catch (error: any) {
