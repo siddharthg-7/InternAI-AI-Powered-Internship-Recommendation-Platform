@@ -1,13 +1,5 @@
-import OpenAI from "openai";
-
-const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
-
-const openai = new OpenAI({
-  apiKey: apiKey,
-  baseURL: "https://generativelanguage.googleapis.com/v1beta/openai",
-  dangerouslyAllowBrowser: true,
-  maxRetries: 0, // Disable internal retries to use our own logic
-});
+import { httpsCallable } from "firebase/functions";
+import { functions } from "./firebase";
 
 const SYSTEM_INSTRUCTION = `You are InternAI, a friendly and helpful AI career assistant for students. You help with:
 - Internship recommendations and advice
@@ -89,7 +81,6 @@ class TokenBucket {
 }
 
 // Gemini free-tier starts at 15 Requests Per Minute.
-// We use a small capacity (burst) to avoid hitting the 15 RPM limit too quickly.
 const rmpBucket = new TokenBucket(2, 10);
 
 // Exponential Backoff Config 
@@ -97,8 +88,8 @@ const MAX_RETRIES = 5;
 const BASE_DELAY_MS = 2000;
 
 /**
- * Attempts to call the Gemini API endpoint using OpenAI SDK with our TokenBucket constraint,
- * as well as Exponential Backoff with Jitter in case of global 429s.
+ * Attempts to call the Gemini Cloud Function with our TokenBucket constraint,
+ * as well as Exponential Backoff with Jitter in case of 429s or other transient errors.
  */
 async function fetchWithRetry(
   history: ChatMessage[],
@@ -109,66 +100,50 @@ async function fetchWithRetry(
     // 1. Wait for client-side token bucket 
     await rmpBucket.acquireToken();
 
-    // 2. Map history to OpenAI format
-    const messages: any[] = [
-      { role: "system", content: SYSTEM_INSTRUCTION },
-      ...history.map(msg => ({
-        role: msg.role === "model" ? "assistant" : "user",
-        content: msg.parts[0].text,
-      })),
-      { role: "user", content: message }
-    ];
+    // 2. Reference the cloud function
+    const chatFn = httpsCallable<{
+      history: ChatMessage[],
+      message: string,
+      systemInstruction: string
+    }, { text: string }>(functions, 'chat');
 
-    // 3. Call the completion API
-    const completion = await openai.chat.completions.create({
-      model: "gemini-1.5-flash",
-      messages: messages,
-    }, {
-      timeout: 30000,
+    // 3. Call the function
+    const result = await chatFn({
+      history,
+      message,
+      systemInstruction: SYSTEM_INSTRUCTION
     });
 
-    const text = completion.choices?.[0]?.message?.content || "";
-    return text;
+    return result.data.text;
 
   } catch (error: any) {
-    const isRateLimit = error.status === 429
-      || error.message?.includes("quota")
-      || error.message?.includes("429")
-      || error.message?.includes("Rate limit")
-      || error.message?.includes("code: 429");
+    const errorMessage = error.message || String(error);
+    const isRetryable = errorMessage.includes("429") 
+      || errorMessage.includes("quota")
+      || errorMessage.includes("Rate limit")
+      || errorMessage.includes("internal")
+      || errorMessage.includes("deadline-exceeded");
 
-    // 4. Handle Exponential Backoff on 429 Quota Exceeded
-    if (isRateLimit && retries < MAX_RETRIES) {
+    // 4. Handle Exponential Backoff
+    if (isRetryable && retries < MAX_RETRIES) {
       const jitter = Math.random() * 1000;
       const delayMs = Math.pow(2, retries) * BASE_DELAY_MS + jitter;
 
       console.warn({
-        message: "[Rate Limit 429] Retrying...",
+        message: "[Retryable Error] Retrying...",
         retryAttempt: retries + 1,
         delay: delayMs,
-        reason: error.message || String(error)
+        reason: errorMessage
       });
 
       await new Promise(resolve => setTimeout(resolve, delayMs));
       return fetchWithRetry(history, message, retries + 1);
     }
 
-    console.error("Gemini OpenAI API error:", error);
+    console.error("Gemini Proxy Error:", error);
     throw error;
   }
 }
-
-// create an function for the jobs search using api
-
-function jobsSearch() {
-  // use the url and api key to get the jobs data
-  // and link the chat bot with this function and get the real time jobs data
-}
-
-
-
-
-
 
 export async function sendChatMessage(
   history: ChatMessage[],
@@ -180,22 +155,20 @@ export async function sendChatMessage(
       ? `[Student Profile Context: ${profileContext}]\n\n${message}`
       : message;
 
-    // Send only the last 5 messages to reduce token usage
-    const recentHistory = history.slice(-5);
+    // Send only the last 6 messages to reduce token usage
+    const recentHistory = history.slice(-6);
 
     return await fetchWithRetry(recentHistory, prompt);
   } catch (error: any) {
-    const isRateLimit = error.status === 429
-      || error.message?.includes("quota")
-      || error.message?.includes("429")
-      || error.message?.includes("Rate limit")
-      || error.message?.includes("code: 429")
-      || String(error).includes("429");
+    const errorMessage = error.message || String(error);
+    const isRateLimit = errorMessage.includes("429") 
+      || errorMessage.includes("quota")
+      || errorMessage.includes("Rate limit");
 
     if (isRateLimit) {
       return "⚠️ The AI is currently busy. Please wait a few seconds and try again.";
     }
-    console.error("UNKNOWN_API_ERROR_CAUGHT:", error, JSON.stringify(error, null, 2));
-    return `Sorry, I couldn't process that request. Please try again later. (Error details: ${error.message || String(error)})`;
+    console.error("UNKNOWN_API_ERROR_CAUGHT:", error);
+    return `Sorry, I couldn't process that request. Please try again later. (Error details: ${errorMessage})`;
   }
 }
