@@ -1,4 +1,4 @@
-# InternAI – AI Internship Recommendation Platform
+# InternAI – AI Internship Recommendation Platform 
 
 [![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)]()
 [![Frontend](https://img.shields.io/badge/Frontend-React%20%7C%20Vite-61dafb.svg)]()
@@ -151,7 +151,7 @@ Career Intelligence Dashboard
 | Frontend | React + Vite + TypeScript | Fast SPA interface |
 | UI Framework | Tailwind CSS | Responsive UI |
 | Backend / Auth | Firebase | Authentication & Firestore database |
-| AI / Chatbot | Google Gemini 2.0 Flash | AI career assistant & recommendations |
+| AI / Chatbot | Google Gemini 2.0 Flash (upgraded) | AI career assistant & recommendations |
 | Internship Data | Adzuna API | Live internship listings |
 | UI Design | Google Stitch AI | Modern SaaS interface |
 
