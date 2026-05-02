@@ -153,7 +153,7 @@ Career Intelligence Dashboard
 | Backend / Auth | Firebase | Authentication & Firestore database |
 | AI / Chatbot | Google Gemini 2.0 Flash (upgraded) | AI career assistant & recommendations |
 | Internship Data | Adzuna API | Live internship listings |
-| UI Design | Google Stitch AI | Modern SaaS interface |
+| UI Design | Google Stitch AI and using React Fa icons  | Modern SaaS interface |
 
 ---
 
